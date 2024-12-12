@@ -1,8 +1,0 @@
-﻿  Building 'PhysicalAddressAccess' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
-  PhysicalAddressAccess.c
-  PhysicalAddressAccess.vcxproj -> C:\Users\Mi\Desktop\PhysicalAddressAccess\x64\Debug\PhysicalAddressAccess.sys
-  Done Adding Additional Store
-  Successfully signed: C:\Users\Mi\Desktop\PhysicalAddressAccess\x64\Debug\PhysicalAddressAccess.sys
-  
-  Inf2Cat task was skipped as there were no inf files to process
-  
