@@ -1,0 +1,43 @@
+[Version]
+Signature		  ="$Windows NT$"
+Class             = System
+ClassGuid         = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider          = %Xiaomi%
+DriverVer         = 01/10/2024,1.0.0.0
+CatalogFile       = %DriverName%.cat
+
+PnpLockdown=1
+
+[DefaultInstall.NTamd64]
+CopyFiles         = DriverFile
+
+[DestinationDirs]
+DefaultDestDir    = 12
+
+[DriverFile]
+%DriverName%.sys
+
+
+[SourceDisksNames]
+1 = %XiaomiEcIoDisk%
+
+[SourceDisksFiles]
+XiaomiEcIo.sys = 1
+
+[DefaultInstall.NTamd64.Services]
+AddService        = %ServiceName%,0x00000800,DriverService
+
+
+[DriverService]
+DisplayName       = %ServiceName%
+ServiceType       = 1 ; SERVICE_KERNEL_DRIVER
+StartType         = 1 ; SERVICE_SYSTEM_START
+ErrorControl      = 1 ; SERVICE_ERROR_NORMAL
+ServiceBinary     = %12%\%DriverName%.sys
+
+
+[Strings]
+Xiaomi            = "Xiaomi"
+DriverName        = "XiaomiEcIo"
+ServiceName       = "XiaomiEcIo"
+XiaomiEcIoDisk		  = "XiaomiEcIo installation media"
