@@ -1,28 +1,26 @@
 [Version]
-Signature		  ="$Windows NT$"
+Signature         = "$WINDOWS NT$"
 Class             = System
 ClassGuid         = {4d36e97d-e325-11ce-bfc1-08002be10318}
-Provider          = %Xiaomi%
-DriverVer         = 01/10/2024,1.0.0.0
+Provider          = %MSFT%
+DriverVer         = 24/10/31,1.0.0.1
 CatalogFile       = %DriverName%.cat
-
-PnpLockdown=1
-
-[DefaultInstall.NTamd64]
-CopyFiles         = DriverFile
+PnpLockdown       = 1
 
 [DestinationDirs]
-DefaultDestDir    = 12
+DefaultDestDir    = 13
 
-[DriverFile]
+[DefaultInstall.NTamd64]
+CopyFiles         = XiaomiEcIo.DriverFiles
+
+[XiaomiEcIo.DriverFiles]
 %DriverName%.sys
 
-
 [SourceDisksNames]
-1 = %XiaomiEcIoDisk%
+1 = %DiskId%,,,""
 
 [SourceDisksFiles]
-XiaomiEcIo.sys = 1
+XiaomiEcIo.sys  = 1,,
 
 [DefaultInstall.NTamd64.Services]
 AddService        = %ServiceName%,0x00000800,DriverService
@@ -31,13 +29,15 @@ AddService        = %ServiceName%,0x00000800,DriverService
 [DriverService]
 DisplayName       = %ServiceName%
 ServiceType       = 1 ; SERVICE_KERNEL_DRIVER
-StartType         = 1 ; SERVICE_SYSTEM_START
+StartType         = 2 ; SERVICE_AUTO_START
 ErrorControl      = 1 ; SERVICE_ERROR_NORMAL
-ServiceBinary     = %12%\%DriverName%.sys
+ServiceBinary     = %13%\%DriverName%.sys
 
 
 [Strings]
-Xiaomi            = "Xiaomi"
+MSFT              = "Xiaomi"
+DiskId			  = "XiaomiEcIo Device Installation Disk #1"
 DriverName        = "XiaomiEcIo"
 ServiceName       = "XiaomiEcIo"
-XiaomiEcIoDisk		  = "XiaomiEcIo installation media"
+;pnputil /add-driver XiaomiEcIo.inf /install
+;pnputil /delete-driver XiaomiEcIo.inf
